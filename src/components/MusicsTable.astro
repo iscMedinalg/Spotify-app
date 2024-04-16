@@ -1,0 +1,77 @@
+---
+import Added from '@/icons/Added.astro'
+import AddSong from '@/icons/AddSong.astro'
+import Time from '@/icons/Time.astro'
+import { type Song } from '@/lib/songs'
+import { allPlaylists } from '@/lib/data'
+
+
+interface Props {
+    songs: Song[]
+}
+const { songs } = Astro.props
+
+let liked = false
+
+---
+
+<table class="table-auto text-left min-w-full divide-y-2 divide-gray-500/20 
+hover:bg-white/10 rounded-lg overflow-hidden">
+    
+    <thead class="">
+        <tr class="text-gray-300 text-sm font-light">
+            <th class="px-4 py-2 font-light">#</th>
+            <th class="px-4 py-2 font-light">Title</th>
+            <th class="px-4 py-2 font-light">Album</th>
+            <th class=" font-light"></th>
+            <th class="px-1 py-2 font-light"><Time /></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="h-[16px]"></tr>
+        {songs.map((song, index ) => (
+            <tr class="border-spacing-0 text-gray-300 text-sm font-light hover:bg-white/10 
+            overflow-hidden transition duration-300">
+                <td class="px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">{ index + 1 }</td>
+                <td class="px-4 py-2 flex gap-3">
+                    <picture class="flex gap-2">
+                        <img 
+                            src={song.image} 
+                            alt={song.title} 
+                            class="w-11 h-11" 
+                        />
+                        
+                        <div class="flex flex-col">
+                            <h3 class="text-white text-base font-normal">{song.title}</h3>
+                            <span>{song.artists.join(', ')}</span>
+                        </div>
+                    </picture>    
+                </td>
+                <td class="px-4 py-2">{song.album}</td>
+                <div class="flex flex-row">
+                    <td>
+                        <button  >
+                            {
+                                liked 
+                                ? <AddSong class="fill-green-500" />
+                                : <Added /> 
+                            }
+                        </button>
+                    </td>
+                    
+                    <td class="" >
+                        {song.duration}
+                    </td>
+                </div>
+            </tr>
+        ))}
+
+       
+    </tbody>
+
+</table>
+
+<!-- Degradado 
+         <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"  >
+        </div> -->

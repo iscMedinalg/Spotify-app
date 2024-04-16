@@ -1,0 +1,75 @@
+---
+import SideMenuItem from './SideMenuItem.astro'
+import SideMenuCard from './SideMenuCard.astro'
+import { allPlaylists } from '@/lib/data';
+
+import Arrow from '@/icons/Arrow.astro';
+import Create from '@/icons/Create.astro';
+import HomeIcon from '@/icons/Home.astro'
+import LibraryIcon from '@/icons/Library.astro'
+import List from '@/icons/List.astro';
+import Search from '@/icons/Search.astro';
+import SearchIcon from '@/icons/Search.astro'
+
+
+---
+
+<nav class="flex flex-col flex-1 gap-2">
+    <div class="bg-zinc-900 rounded-lg p-2">
+        <ul >
+            <SideMenuItem href='/' >
+                <HomeIcon />
+                Home
+            </SideMenuItem>
+
+            <SideMenuItem href='/#'>
+                <SearchIcon/>
+                Search
+            </SideMenuItem>
+
+        </ul>
+    </div>
+    
+    <div class="bg-zinc-900 rounded-lg p-2 flex-1">
+
+        <div class="flex justify-between gap-4 items-center py-3 px-5 font-medium text-zinc-400 hover:text-zinc-100 
+            transition duration-300"
+        >
+            <div class=" flex flex-row gap-4">
+                <LibraryIcon />
+                Your Library
+            </div>
+            <div class="flex  flex-row gap-4">
+                <Create />
+                <Arrow />
+            </div>
+        </div>
+
+        <!-- Todo Filters -->
+        <div class="flex gap-2 items-center ml-2 overflow-x-hidden text-sm">
+            <button class="rounded-full bg-zinc-800 px-3 py-1 ">Playlists</button>
+            <button class="rounded-full bg-zinc-800 px-3 py-1 ">Albums</button>
+            <button class="rounded-full bg-zinc-800 px-3 py-1 ">Artists</button>
+            <button class="rounded-full bg-zinc-800 px-3 py-1 grow-0" disabled aria-disabled="true">Podcast</button>
+        </div>
+        <div class="flex items-center justify-between mt-3 text-sm mx-4">
+            <button>
+                <Search />
+            </button>
+            <button class="flex gap-2">
+                Recents<List />
+            </button>
+        </div>
+
+        <ul>
+            <SideMenuItem  href='/' />  
+            {
+                allPlaylists.map(playlist => <SideMenuCard playlist={playlist}/>)
+            }
+        </ul>
+
+
+        <!-- <CreatePlaylistIcon />
+        <ArrowIcon /> -->
+    </div>
+</nav>
