@@ -6,11 +6,12 @@ interface Props {
 }
 
 const { playlist } = Astro.props
-const { id, cover, title, artists, color} = playlist
+// color
+const { id, cover, title, artists} = playlist
 
 const artistsString = artists.join(", ")
 
- const playlists = allPlaylists.find((playlist) => playlist.id === id)
+//  const playlists = allPlaylists.find((playlist) => playlist.id === id)
 ---
 
 <a 

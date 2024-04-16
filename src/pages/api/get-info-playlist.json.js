@@ -1,7 +1,8 @@
 import { allPlaylists} from "@/lib/data";
 import { songs as allSongs } from "@/lib/songs"
 
-export async function GET({params, request}){
+// params
+export async function GET({request}){
     // get the id from the url search params
     // const[, querystring] = url.split('?')
     // const searchParams = new URLSearchParams(querystring)

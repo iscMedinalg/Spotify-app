@@ -428,11 +428,12 @@ const SongControl = ({ audio }) => {
 
 
 export function Player () {  
-    const { currentMusic, setCurrentMusic, isPlaying, setIsPlaying, volume } = usePlayerStore(state => state)
+    //setCurrentMusic,
+    const { currentMusic,  isPlaying, setIsPlaying, volume } = usePlayerStore(state => state)
     
 
     const audioRef = useRef()
-    const volumeRef = useRef(1)
+    // const volumeRef = useRef(1)
 
     useEffect(() => {
         isPlaying 
@@ -445,7 +446,8 @@ export function Player () {
     }, [volume] )
 
     useEffect(() => {
-      const { song, playlist, songs } = currentMusic    
+        //songs
+      const { song, playlist,  } = currentMusic    
       if(song){
         const src = `/music/${playlist?.id}/${song.id}.mp3`
         audioRef.current.src = src

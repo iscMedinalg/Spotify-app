@@ -1,4 +1,4 @@
-import { playlists } from "@/lib/data";
+// import { playlists } from "@/lib/data";
 import { Pause, Play } from "./Player"
 import { usePlayerStore } from "@/store/playerStore"
 
